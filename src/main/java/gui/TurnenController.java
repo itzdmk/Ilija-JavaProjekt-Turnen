@@ -4,15 +4,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
+/**
+ * Steuert die Interaktion zwischen GUI und Modell.
+ * Der Controller liest Eingaben aus, erstellt Modelle und aktualisiert die Ansicht.
+ */
 public class TurnenController {
 
-private MainWindow view; // Referenz auf das Hauptfenster (GUI)
-private ArrayList<TurnenModel> wettkampfListe = new ArrayList<>(); // Liste zur Speicherung aller Ergebnisse
+    private MainWindow view; // Referenz auf das Hauptfenster (GUI)
+    private List<TurnenModel> wettkampfListe = new ArrayList<>(); // Liste zur Speicherung aller Ergebnisse
 
 public TurnenController(MainWindow view) {
     this.view = view; // Initialisiert die View
-    this.view.addBerechnenListener(new BerechnenListener()); // Registriert den Klick-Event für den Button
+    this.view.addBerechnenListener(new BerechnenListener()); // Registriert den Klick-Event fï¿½r den Button
 }
 
 private class BerechnenListener implements ActionListener {
@@ -41,7 +46,7 @@ private class BerechnenListener implements ActionListener {
 
         } catch (NumberFormatException ex) {
             // Fehler bei falscher Zahleneingabe anzeigen
-            view.zeigeFehler("Ungültiges Zahlenformat. Bitte numerische Werte eingeben.", "Formatfehler");
+            view.zeigeFehler("Ungï¿½ltiges Zahlenformat. Bitte numerische Werte eingeben.", "Formatfehler");
         } catch (IllegalArgumentException ex) {
             // Sonstige Logikfehler anzeigen
             view.zeigeFehler(ex.getMessage(), "Eingabefehler");
@@ -50,7 +55,7 @@ private class BerechnenListener implements ActionListener {
 }
 
 private double parseNote(String input) throws NumberFormatException {
-    // Prüft auf leere Felder und ersetzt Komma durch Punkt für die Umwandlung
+    // Prï¿½ft auf leere Felder und ersetzt Komma durch Punkt fï¿½r die Umwandlung
     if (input == null || input.trim().isEmpty()) {
         throw new NumberFormatException("Leere Eingabe");
     }
@@ -70,7 +75,7 @@ private void updateDisplay() {
         });
     }
 
-    // Den Teilnehmer mit der höchsten Endnote finden
+    // Den Teilnehmer mit der hï¿½chsten Endnote finden
     TurnenModel sieger = wettkampfListe.stream()
             .max(Comparator.comparingDouble(TurnenModel::berechneEndnote))
             .orElse(null);

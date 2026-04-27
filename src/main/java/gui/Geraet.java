@@ -1,7 +1,10 @@
 package gui;
 
+/**
+ * AufzÃ¤hlung fÃ¼r TurngerÃ¤te.
+ * Diese Enum-Klasse bietet die mÃ¶glichen WettkampfgerÃ¤te der Anwendung.
+ */
 public enum Geraet {
-    // Das sind die erlaubten Geräte
     BODEN("Boden"),
     PAUSCHENPFERD("Pauschenpferd"),
     RINGE("Ringe"),
@@ -11,12 +14,15 @@ public enum Geraet {
 
     private final String name;
 
-    // Speichert den schönen Namen für das Gerät (z.B. "Pauschenpferd")
+    /**
+     * Speichert die Anzeigeform des GerÃ¤ts.
+     * @param name Anzeigename
+     */
     Geraet(String name) {
         this.name = name;
     }
 
-    // Sorgt dafür, dass in der Tabelle "Boden" steht statt "BODEN"
+    @Override
     public String toString() {
         return name;
     }

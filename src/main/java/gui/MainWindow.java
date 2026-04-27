@@ -6,7 +6,10 @@ import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.table.DefaultTableModel;
 
-// Hauptfenster der Anwendung
+/**
+ * Hauptfenster der Turn-Bewertungsanwendung.
+ * Die GUI sammelt Eingaben, zeigt Ergebnisse und steuert den Gesamtfluss.
+ */
 public class MainWindow extends JFrame {
 
     // Eingabefelder
@@ -24,11 +27,11 @@ public class MainWindow extends JFrame {
     // Anzeige
     private JLabel lblErgebnis;
 
-    // Tabelle für Ergebnisse
+    // Tabelle fï¿½r Ergebnisse
     private DefaultTableModel tableModel;
     private JTable tblErgebnisse;
 
-    // Konstruktor baut die ganze Oberfläche
+    // Konstruktor baut die ganze Oberflï¿½che
     public MainWindow() {
         setTitle("Turn-Bewertungsrechner PRO");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -44,7 +47,7 @@ public class MainWindow extends JFrame {
         lblImage.setHorizontalAlignment(SwingConstants.CENTER);
 
         try {
-            java.net.URL imgURL = getClass().getResource("Logo.png");
+            java.net.URL imgURL = getClass().getResource("/Logo.png");
             if (imgURL != null) {
                 ImageIcon originalIcon = new ImageIcon(imgURL);
                 Image scaledImage = originalIcon.getImage().getScaledInstance(150, 80, Image.SCALE_SMOOTH);
@@ -70,8 +73,8 @@ public class MainWindow extends JFrame {
         txtName = new JTextField();
         addGridField(pnlInput, txtName, 1, 0, gridInsets);
 
-        // Gerät Auswahl
-        addGridLabel(pnlInput, "Gerät:", 0, 1, labelFont, gridInsets);
+        // Gerï¿½t Auswahl
+        addGridLabel(pnlInput, "Gerï¿½t:", 0, 1, labelFont, gridInsets);
         cbGeraet = new JComboBox<>();
         cbGeraet.setModel(new DefaultComboBoxModel<>(Geraet.values()));
         addGridField(pnlInput, cbGeraet, 1, 1, gridInsets);
@@ -115,7 +118,7 @@ public class MainWindow extends JFrame {
         contentPane.add(pnlSouth, BorderLayout.SOUTH);
 
         // Button zum Berechnen
-        btnBerechnen = new JButton("WERTUNG HINZUFÜGEN");
+        btnBerechnen = new JButton("WERTUNG HINZUFï¿½GEN");
         btnBerechnen.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnBerechnen.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
         btnBerechnen.setFont(new Font("Copperplate Gothic Light", Font.BOLD | Font.ITALIC, 15));
@@ -134,7 +137,7 @@ public class MainWindow extends JFrame {
         pnlSouth.add(Box.createVerticalStrut(5));
 
         // Tabelle
-        String[] columnNames = {"Name", "Geschlecht", "Gerät", "Endnote"};
+        String[] columnNames = {"Name", "Geschlecht", "Gerï¿½t", "Endnote"};
         tableModel = new DefaultTableModel(columnNames, 0);
 
         tblErgebnisse = new JTable(tableModel);
@@ -144,7 +147,7 @@ public class MainWindow extends JFrame {
         pnlSouth.add(scrollPane);
     }
 
-    // Fügt ein Label ins Grid ein
+    // Fï¿½gt ein Label ins Grid ein
     private void addGridLabel(JPanel pnl, String text, int x, int y, Font font, Insets insets) {
         JLabel lbl = new JLabel(text);
         lbl.setFont(font);
@@ -158,7 +161,7 @@ public class MainWindow extends JFrame {
         pnl.add(lbl, gbc);
     }
 
-    // Fügt ein Eingabefeld ins Grid ein
+    // Fï¿½gt ein Eingabefeld ins Grid ein
     private void addGridField(JPanel pnl, Component comp, int x, int y, Insets insets) {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -170,12 +173,12 @@ public class MainWindow extends JFrame {
         pnl.add(comp, gbc);
     }
 
-    // Listener für Button hinzufügen
+    // Listener fï¿½r Button hinzufï¿½gen
     public void addBerechnenListener(ActionListener listener) {
         btnBerechnen.addActionListener(listener);
     }
 
-    // Getter Methoden für Eingaben
+    // Getter Methoden fï¿½r Eingaben
     public String getAthletName() {
         return txtName.getText();
     }
@@ -205,7 +208,7 @@ public class MainWindow extends JFrame {
         lblErgebnis.setText(text);
     }
 
-    // Neue Zeile zur Tabelle hinzufügen
+    // Neue Zeile zur Tabelle hinzufï¿½gen
     public void addRow(Object[] row) {
         tableModel.addRow(row);
     }
