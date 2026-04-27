@@ -17,7 +17,7 @@ public class TurnenController {
 
 public TurnenController(MainWindow view) {
     this.view = view; // Initialisiert die View
-    this.view.addBerechnenListener(new BerechnenListener()); // Registriert den Klick-Event f�r den Button
+    this.view.addBerechnenListener(new BerechnenListener()); // Registriert den Klick-Event für den Button
 }
 
 private class BerechnenListener implements ActionListener {
@@ -46,7 +46,7 @@ private class BerechnenListener implements ActionListener {
 
         } catch (NumberFormatException ex) {
             // Fehler bei falscher Zahleneingabe anzeigen
-            view.zeigeFehler("Ung�ltiges Zahlenformat. Bitte numerische Werte eingeben.", "Formatfehler");
+            view.zeigeFehler("Ungültiges Zahlenformat. Bitte numerische Werte eingeben.", "Formatfehler");
         } catch (IllegalArgumentException ex) {
             // Sonstige Logikfehler anzeigen
             view.zeigeFehler(ex.getMessage(), "Eingabefehler");
@@ -55,7 +55,7 @@ private class BerechnenListener implements ActionListener {
 }
 
 private double parseNote(String input) throws NumberFormatException {
-    // Pr�ft auf leere Felder und ersetzt Komma durch Punkt f�r die Umwandlung
+    // Prüft auf leere Felder und ersetzt Komma durch Punkt für die Umwandlung
     if (input == null || input.trim().isEmpty()) {
         throw new NumberFormatException("Leere Eingabe");
     }
@@ -75,7 +75,7 @@ private void updateDisplay() {
         });
     }
 
-    // Den Teilnehmer mit der h�chsten Endnote finden
+    // Den Teilnehmer mit der höchsten Endnote finden
     TurnenModel sieger = wettkampfListe.stream()
             .max(Comparator.comparingDouble(TurnenModel::berechneEndnote))
             .orElse(null);

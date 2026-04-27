@@ -27,11 +27,11 @@ public class MainWindow extends JFrame {
     // Anzeige
     private JLabel lblErgebnis;
 
-    // Tabelle f�r Ergebnisse
+    // Tabelle für Ergebnisse
     private DefaultTableModel tableModel;
     private JTable tblErgebnisse;
 
-    // Konstruktor baut die ganze Oberfl�che
+    // Konstruktor baut die ganze Oberfläche
     public MainWindow() {
         setTitle("Turn-Bewertungsrechner PRO");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -73,8 +73,8 @@ public class MainWindow extends JFrame {
         txtName = new JTextField();
         addGridField(pnlInput, txtName, 1, 0, gridInsets);
 
-        // Ger�t Auswahl
-        addGridLabel(pnlInput, "Ger�t:", 0, 1, labelFont, gridInsets);
+        // Gerät Auswahl
+        addGridLabel(pnlInput, "Gerät:", 0, 1, labelFont, gridInsets);
         cbGeraet = new JComboBox<>();
         cbGeraet.setModel(new DefaultComboBoxModel<>(Geraet.values()));
         addGridField(pnlInput, cbGeraet, 1, 1, gridInsets);
@@ -118,7 +118,7 @@ public class MainWindow extends JFrame {
         contentPane.add(pnlSouth, BorderLayout.SOUTH);
 
         // Button zum Berechnen
-        btnBerechnen = new JButton("WERTUNG HINZUF�GEN");
+        btnBerechnen = new JButton("WERTUNG HINZUFÜGEN");
         btnBerechnen.setAlignmentX(Component.CENTER_ALIGNMENT);
         btnBerechnen.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
         btnBerechnen.setFont(new Font("Copperplate Gothic Light", Font.BOLD | Font.ITALIC, 15));
@@ -137,7 +137,7 @@ public class MainWindow extends JFrame {
         pnlSouth.add(Box.createVerticalStrut(5));
 
         // Tabelle
-        String[] columnNames = {"Name", "Geschlecht", "Ger�t", "Endnote"};
+        String[] columnNames = {"Name", "Geschlecht", "Gerät", "Endnote"};
         tableModel = new DefaultTableModel(columnNames, 0);
 
         tblErgebnisse = new JTable(tableModel);
@@ -147,7 +147,7 @@ public class MainWindow extends JFrame {
         pnlSouth.add(scrollPane);
     }
 
-    // F�gt ein Label ins Grid ein
+    // Fügt ein Label ins Grid ein
     private void addGridLabel(JPanel pnl, String text, int x, int y, Font font, Insets insets) {
         JLabel lbl = new JLabel(text);
         lbl.setFont(font);
@@ -161,7 +161,7 @@ public class MainWindow extends JFrame {
         pnl.add(lbl, gbc);
     }
 
-    // F�gt ein Eingabefeld ins Grid ein
+    // Fügt ein Eingabefeld ins Grid ein
     private void addGridField(JPanel pnl, Component comp, int x, int y, Insets insets) {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -173,12 +173,12 @@ public class MainWindow extends JFrame {
         pnl.add(comp, gbc);
     }
 
-    // Listener f�r Button hinzuf�gen
+    // Listener für Button hinzufügen
     public void addBerechnenListener(ActionListener listener) {
         btnBerechnen.addActionListener(listener);
     }
 
-    // Getter Methoden f�r Eingaben
+    // Getter Methoden für Eingaben
     public String getAthletName() {
         return txtName.getText();
     }
@@ -208,7 +208,7 @@ public class MainWindow extends JFrame {
         lblErgebnis.setText(text);
     }
 
-    // Neue Zeile zur Tabelle hinzuf�gen
+    // Neue Zeile zur Tabelle hinzufügen
     public void addRow(Object[] row) {
         tableModel.addRow(row);
     }
